@@ -14,7 +14,7 @@ namespace Task_1
             var deserialize =JsonConvert.DeserializeObject<List<MovieStar>>(text);
             foreach (var item in deserialize)
             {
-                Console.WriteLine(item.ToString());
+                Console.WriteLine(item.ToConsole());
             }
         }
     }
