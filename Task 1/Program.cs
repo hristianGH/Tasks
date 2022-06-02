@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
-using Newtonsoft;
+using Newtonsoft.Json;
+using Task_1.Models;
 
 namespace Task_1
 {
@@ -9,7 +11,11 @@ namespace Task_1
         static void Main(string[] args)
         {
             string text = File.ReadAllText("Text\\input.txt");
-            Console.WriteLine(text);
+            var deserialize =JsonConvert.DeserializeObject<List<MovieStar>>(text);
+            foreach (var item in deserialize)
+            {
+                Console.WriteLine(item.ToString());
+            }
         }
     }
 }
