@@ -50,12 +50,12 @@ namespace Task2.Test
         }
 
         [Fact]
-        public void SalarySocialContributingShouldNotApplyToIncomeOver3000()
+        public void SalarySocialContributingShouldApplyToIncomeOver3000()
         {
-            double input = 5000;
+            double input = 3400;
             var salary = new Salary(input);
             salary.Taxes();
-            Assert.True(salary.SocialContribution==0);
+            Assert.True(salary.SocialContribution==300);
         }
     }
 }

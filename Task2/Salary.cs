@@ -46,13 +46,12 @@ namespace Task2
             {
                 return;
             }
-
             ApplyTax();
-            SocialContributing();
 
             Console.WriteLine($"Total tax = {Tax + SocialContribution}");
             Console.WriteLine($"Income is {income}");
         }
+
         private void ApplyTax()
         {
             // Check amount lower than 1000
@@ -63,19 +62,23 @@ namespace Task2
             }
 
             Tax = (income - baseIncome) * 0.10;
-            Console.WriteLine($"Income above threshold, 10% tax = {Tax} IDR");
+            Console.WriteLine($"Income above threshold, 10% tax from {income} = {Tax} IDR");
             income -= Tax;
+            SocialContributing();
+
         }
+
         private void SocialContributing()
         {
-            if (income - 1000 > 3000)
+            double diffrence = 0;
+            if (income > 3000)
             {
-                return;
+                diffrence = Math.Abs(income - 3000);
             }
-            SocialContribution = (income - baseIncome) * 0.15;
-            Console.WriteLine($"Social contribution of 15% = {SocialContribution} IDR");
-            income -= SocialContribution;
 
+            SocialContribution = (income - diffrence - baseIncome) * 0.15;
+            Console.WriteLine($"Social contribution of 15% from {income - diffrence - baseIncome} = {SocialContribution} IDR");
+            income -= SocialContribution;
         }
     }
 }
