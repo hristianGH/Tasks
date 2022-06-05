@@ -2,12 +2,29 @@
 
 <head>
     <script>
-    function GetElement(elementId) {
-        let selected = document.getElementById(elementId);
-        let arr=[...selected.querySelectorAll('*')];
-        arr.unshift(selected);
-        return arr;
-    }
+        function GetElement(elementId) {
+            let selected = document.getElementById(elementId);
+            let arr = [...selected.querySelectorAll('*')];
+            arr.unshift(selected);
+            return arr;
+        }
+
+        function ExampleOfUse(params) {
+            //Randomize in the body of the page
+           let body= document.querySelector('body')
+            shuffleArray(params)
+            params.forEach(x => {
+                body.append(x);
+            });
+        }
+
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+
     </script>
 
 </head>
@@ -44,7 +61,7 @@
             <li><a href="#">About</a></li>
         </ul>
     </footer>
- 
+
 </body>
- 
+
 </html>
